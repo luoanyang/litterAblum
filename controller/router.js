@@ -46,10 +46,11 @@ exports.doPost = function (req, res) {
     var imgData = req.files.imgSrc;
     file.uploadImgSave(albumName, imgData, function (err) {
         if (err) {
-            res.writeHead(200, {"Content-type":"text/html"});
-            res.end("<script>alert(文件不能大于2m)</script>");
+            res.writeHead(200, {"Content-type":"text/html;charset=utf8"});
+            res.end("<script>alert('文件不能大于2m！');location.href='/up'</script>");
             return;
         }
-        res.end('ok')
+        res.writeHead(200, {"Content-type":"text/html;charset=utf8"});
+        res.end("<script>alert('上传成功！');location.href='/up'</script>");
     });
 }

@@ -58,20 +58,21 @@ exports.getAllAlbumsImg = function (albumName, callback) {
 
 //上传图片地址存储和命名设置
 exports.uploadImgSave = function(ablumName,imgData,callback){
-    var size = imgData.size;
-    var nowtime = sd.format(new Date(), 'YYYYMMDDHHmm');//时间戳
-    var random = parseInt(Math.random()*89999)+10000;
-    var oldSrc = './uploads/'+imgData.name;
-    var nowSrc = './uploads/'+ablumName+'/'+nowtime+random+'.'+imgData.extension;
+    if(imgData&&ablumName){
+        var size = imgData.size;
+        var nowtime = sd.format(new Date(), 'YYYYMMDDHHmm');//时间戳
+        var random = parseInt(Math.random()*89999)+10000;
+        var oldSrc = './uploads/'+imgData.name;
+        var nowSrc = './uploads/'+ablumName+'/'+nowtime+random+'.'+imgData.extension;
 
-    if(size>2000){
-        console.log(oldSrc)
-        fs.unlink(oldSrc,function(){
-            callback("文件不能大于2m");
-        });
-    }else{
-        fs.rename(oldSrc,nowSrc,function(err){
-            callback(err);
-        });
+        if(size>2000000){
+            fs.unlink(oldSrc,function(){
+                callback("文件不能大于2m");
+            });
+        }else{
+            fs.rename(oldSrc,nowSrc,function(err){
+                callback(err);
+            });
+        }
     }
 }
