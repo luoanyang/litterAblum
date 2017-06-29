@@ -7,13 +7,13 @@ nodejs使用express模块搭建的一个小相册
 4. package.json的用处。
 
 `
-|__controller    //控制器
-|__models        //模型
-|__node_modules  //依赖文件夹
-|__public        //静态资源
-|__uploads       //上传文件夹
-|__views         //视图
-|__app.js        //入口文件
+|__controller    //控制器    
+|__models        //模型  
+|__node_modules  //依赖文件夹  
+|__public        //静态资源  
+|__uploads       //上传文件夹  
+|__views         //视图  
+|__app.js        //入口文件  
 |__package.json  //依赖
 
 `
