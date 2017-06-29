@@ -18,10 +18,11 @@
 |__package.json   //依赖
  
 ### 项目运行  
-1. git clone git@github.com:luoanyang/littleAblum.git
-2. cd littleAblum
+1. git clone git@github.com:luoanyang/littleAblum-nodejs.git
+2. cd littleAblum-nodejs
 3. npm install
 4. node app.js
+5. 浏览器打开 localhost (端口为80)
 
 ### 项目演示
 ![项目演示](resoure/demo.gif)
