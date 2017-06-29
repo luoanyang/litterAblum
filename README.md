@@ -7,7 +7,7 @@ nodejs使用express模块搭建的一个小相册
 4. package.json的用处。
  
 ### 项目结构
-|__controller     //控制器      
+|__controller     //控制器        
 |__models         //模型  
 |__node_modules   //依赖文件夹  
 |__public         //静态资源  
