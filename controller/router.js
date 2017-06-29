@@ -54,3 +54,15 @@ exports.doPost = function (req, res) {
         res.end("<script>alert('上传成功！');location.href='/up'</script>");
     });
 }
+
+exports.newAblumName = function(req,res){
+    var fileName = req.body.newAblumName;
+    file.newFile(fileName,function(err){
+        if(err){
+            res.json({'msg':'no'});
+            return;
+        }
+        res.json({'msg':'ok'});
+        return;
+    })
+}

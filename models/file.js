@@ -76,3 +76,15 @@ exports.uploadImgSave = function(ablumName,imgData,callback){
         }
     }
 }
+
+exports.newFile = function(fileName,callback){
+    var files = './uploads/'+fileName;
+    console.log(files)
+    fs.mkdir(files,function(err){
+        if(err){
+            callback(err);
+            return;
+        }
+        callback(null);
+    })
+}

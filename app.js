@@ -25,6 +25,8 @@ app.get("/",router.showIndex);
 app.get("/up",router.showUp);
 //获取上传数据
 app.post("/up",router.doPost);
+//获取上传数据
+app.post("/newAblumName",router.newAblumName);
 //相册页
 app.get("/:albumName",router.showAlbum);
 //404页

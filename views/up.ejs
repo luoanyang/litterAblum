@@ -37,21 +37,66 @@
         <form method="post" action="#" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">选择文件夹</label>
-                <select class="form-control" name="ablum">
+                <select class="form-control" name="ablum" id="select-box">
                     <% for(var i = 0;i < albums.length;i++){ %>
-                    <option value="<%= albums[i]%>"><%= albums[i]%></option>
+                    <option value="<%= albums[i] %>"><%= albums[i] %></option>
                     <% } %>
                 </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-sm btn-info" data-toggle="modal" data-target="#model-wrap">新建文件夹</button>
             </div>
             <div class="form-group">
                 <label for="exampleInputFile">选择图片</label>
                 <input name="imgSrc" type="file" id="exampleInputFile">
             </div>
-            <button type="submit" class="btn btn-default">上传</button>
+            <button type="submit" class="btn btn-success">上传</button>
         </form>
     </div>
 </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="model-wrap">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新建文件夹</h4>
+            </div>
+            <div class="modal-body">
+                <p><span id="newFileStats" class="label label-info">stats</span></p>
+                <input class="form-control" id="newAblumName" placeholder="请输入文件名">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="newFileBtn">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script>
+    $('#newFileBtn').click(function () {
+        var newAblumName = $("#newAblumName").val().trim();
+        if (newAblumName) {
+            $.post("/newAblumName", {"newAblumName": newAblumName}, function (data) {
+                if (data.msg == 'ok') {
+                    $("#newFileStats").html("新建成功！").addClass("label-success").removeClass("label-info");
+                    var option = "<option value="+newAblumName+">"+newAblumName+"</option>"
+                    $("#select-box").append(option);
+                } else {
+                    $("#newFileStats").html("新建失败！请检查名称").addClass("label-danger").removeClass("label-info");
+                }
+                setTimeout(function(){
+                    console.log(1)
+                    $("#model-wrap").modal('hide');
+                },1000)
+            })
+        } else {
+            alert('请输入文件名!');
+        }
+    });
+</script>
 </body>
 </html>
