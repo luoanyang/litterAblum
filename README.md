@@ -25,4 +25,4 @@
 5. 浏览器打开 localhost (端口为80)
 
 ### 4.项目演示
-![项目演示](resoure/demo.gif)
+![项目演示](source/demo.gif)
